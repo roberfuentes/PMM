@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TableRow android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        <TextView
+            android:id="@+id/fieldName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="NOMBRE:"
+            />
+        <EditText
+            android:id="@+id/edName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </TableRow>
+    <TableRow android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        <TextView
+            android:id="@+id/fieldSurname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="APELLIDO:"
+            />
+        <EditText
+            android:id="@+id/edSurname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </TableRow>
+    <TableRow android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        <TextView
+            android:id="@+id/fieldAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EDAD:"
+            />
+        <EditText
+            android:id="@+id/edAge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </TableRow>
+    <TableRow android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+        <ImageView
+            android:id="@+id/myPicture"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </TableRow>
+    <TableRow android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+        <Button
+            android:id="@+id/btnGo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PULSA BOTON:"/>
+    </TableRow>
+
+</TableLayout>

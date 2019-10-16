@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activity2">
+
+    <TextView
+        android:id="@+id/allInfo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="OBJECT:"  />
+    <TextView
+        android:id="@+id/fieldName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/allInfo"
+        android:layout_marginTop="30dp"
+        android:text="NAME:"  />
+    <TextView
+        android:id="@+id/fieldSurname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fieldName"
+        android:layout_marginTop="30dp"
+        android:text="SURNAME:" />
+    <TextView
+        android:id="@+id/fieldAge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fieldSurname"
+        android:layout_marginTop="30dp"
+        android:text="AGE:" />
+    <ImageView
+        android:id="@+id/fieldPicture"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fieldAge"
+        android:layout_marginTop="30dp"
+        android:adjustViewBounds="true"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/fieldPicture"
+        android:layout_marginTop="30dp"
+        android:text="Button BACK"
+        android:id="@+id/btnBack"
+        />
+
+
+
+
+</RelativeLayout>
