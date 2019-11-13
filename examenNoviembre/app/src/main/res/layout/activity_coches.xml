@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Coches">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/layoutHeader"
+        >
+        <TextView
+            android:id="@+id/pruebas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="24dp"
+            android:textColor="#FFAAF1"
+            android:textStyle="bold"
+            android:text="ALQUILER\nMEDIOS MOVIDIDAD" />
+        <ImageView
+            android:id="@+id/imagenTitulo"
+            android:layout_marginTop="15dp"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/movilidad" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/layoutMiddle"
+        android:layout_below="@+id/layoutHeader"
+        android:layout_marginTop="25dp"
+        >
+
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spnCoches"
+            />
+
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/radioGroupSecure"
+
+            android:layout_alignParentRight="true"
+            >
+
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButtonNoSecure"
+                android:text="Sin seguro"
+                />
+
+            <RadioButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/radioButtonCompleteSecure"
+                android:text="Seguro Completo"
+                />
+
+        </RadioGroup>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBoxProtection"
+            android:layout_below="@+id/spnElectrico"
+            android:layout_marginTop="85dp"
+            android:text="Cascos/Guantes"
+            />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkboxGPS"
+            android:layout_toRightOf="@+id/checkBoxProtection"
+            android:layout_below="@+id/spnElectrico"
+            android:layout_marginTop="85dp"
+            android:text="Incluye GPS"
+            />
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/checkBoxExtras"
+            android:layout_below="@+id/spnElectrico"
+            android:layout_toRightOf="@+id/checkboxGPS"
+            android:layout_marginTop="85dp"
+            android:text="Más Extras"
+            />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/layoutMiddle"
+        android:layout_marginTop="25dp">
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/entryDias"
+            android:text=""
+            />
+
+
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonTotalPrice"
+            android:layout_below="@+id/entryDias"
+            android:layout_marginLeft="180dp"
+            android:text="TOTAL PRECIO"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/txtPrice"
+
+            android:layout_below="@+id/entryDias"
+            android:layout_toRightOf="@id/buttonTotalPrice"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/buttonFactura"
+            android:text="FACTURA"
+            android:layout_marginLeft="140dp"
+            android:layout_alignParentBottom="true"
+
+            />
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+</RelativeLayout>
