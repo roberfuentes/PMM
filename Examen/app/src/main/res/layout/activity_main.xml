@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spnZonas"/>
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/imgWorldWide"
+        android:layout_toRightOf="@+id/spnZonas"
+        />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioGroupTarifa"
+        android:layout_below="@+id/imgWorldWide"
+        android:layout_toRightOf="@+id/spnZonas"
+        >
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rdBtnNormal"
+            android:text="Tarifa normal"
+
+            />
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/rdBtnUrgente"
+            android:text="Tarifa Urgente"/>
+    </RadioGroup>
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkRegalo"
+        android:text="Caja Regalo"
+        android:layout_below="@+id/radioGroupTarifa"
+        />
+
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/checkTarjeta"
+        android:text="Con tarjeta de dedicada"
+        android:layout_below="@+id/radioGroupTarifa"
+        android:layout_toEndOf="@+id/checkRegalo"
+        />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/entryPeso"
+        android:hint="Introduce el peso del paquete"
+        android:layout_below="@+id/checkRegalo"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnCalculo"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="Calcula el envio"/>
+
+    <!--android:layout_below="@+id/imgWorldWide"-->
+
+
+
+
+</RelativeLayout>
