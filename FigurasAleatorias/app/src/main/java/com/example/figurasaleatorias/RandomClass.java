@@ -6,8 +6,9 @@ import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
+import android.util.AttributeSet;
 import android.view.View;
-
+import android.widget.LinearLayout;
 
 
 public class RandomClass extends View {
@@ -19,6 +20,10 @@ public class RandomClass extends View {
 
     public RandomClass(Context context){
         super(context);
+    }
+
+    public RandomClass(Context context, AttributeSet attrs){
+        super(context, attrs);
     }
 
     public void onDraw(Canvas canvas){

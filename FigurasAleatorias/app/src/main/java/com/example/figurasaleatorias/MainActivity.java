@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intento  = new Intent(MainActivity.this, RandomActivity.class);
-                startActivity(intento);
+                startActivity(intento) ;
             }
         });
 

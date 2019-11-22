@@ -11,12 +11,11 @@
 
     <Button
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:onClick="redraw"
         android:text="Redraw"/>
 
-    <view
-        class="com.example.figurasaleatorias.RandomClass"
+    <com.example.figurasaleatorias.RandomClass
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/drawing_area"

@@ -19,5 +19,6 @@ public class RandomActivity extends AppCompatActivity {
 
     public void redraw(View btnClick){
         mDrawingArea.invalidate();
+
     }
 }
