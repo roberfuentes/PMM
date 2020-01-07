@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SelectVehicle">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/frameTop">
+        <TextView
+            android:id="@+id/pruebas"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:textSize="24dp"
+            android:textColor="#FFAAF1"
+            android:textStyle="bold"
+            android:text="ALQUILER\nMEDIOS MOVIDIDAD" />
+        <ImageView
+            android:id="@+id/imagenTitulo"
+            android:layout_marginTop="15dp"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_marginRight="10dp"
+            android:src="@drawable/movilidad" />
+    </LinearLayout>
+
+
+    <Spinner
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinner"
+        android:layout_below="@id/frameTop"
+        />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/radioGroup"
+        android:layout_toRightOf="@+id/spinner"
+        android:layout_below="@+id/frameTop"
+        android:layout_marginLeft="50dp"
+        >
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/notInsurance"
+            android:text="Sin seguro"/>
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/insurance"
+            android:text="Seguro completo"/>
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/checkBoxes"
+        android:layout_below="@+id/spinner"
+        >
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/extraAccesorios"
+            android:text="Cascos y guantes"
+            />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="GPS"
+            android:id="@+id/extraGPS"/>
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/extras"
+            android:text="Extras"/>
+    </LinearLayout>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/entryDays"
+        android:hint="Days"
+        android:layout_below="@id/checkBoxes"
+        />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/txtPreviewPrice"
+        android:layout_below="@+id/entryDays"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnPreviewPrice"
+        android:layout_below="@+id/txtPreviewPrice"
+        android:text="Total precio"/>
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/btnPreviewPrice"
+        android:layout_below="@id/txtPreviewPrice"
+        android:text="Factura"
+        android:id="@+id/btnFactura"
+        />
+
+
+
+
+
+
+
+</RelativeLayout>
