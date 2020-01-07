@@ -9,11 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-public class DialogFragment extends android.app.DialogFragment
+public class MyDialogFragment extends android.app.DialogFragment
 {
 
-    public static DialogFragment newInstance(String valor){
-        DialogFragment frag = new DialogFragment();
+    public static MyDialogFragment newInstance(String valor){
+        MyDialogFragment frag = new MyDialogFragment();
 
         return frag;
     }
