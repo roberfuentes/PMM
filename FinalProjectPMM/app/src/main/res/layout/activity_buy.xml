@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".BuyActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/header"
+        android:text="XIAOMI MEJOR RELACIÓN CALIDAD PRECIO DEL MERCADO "
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/labelCustomer"
+        android:text="Customer ID"
+        android:layout_below="@id/header"
+        android:layout_marginTop="15dp"
+        />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:width="100dp"
+        android:id="@+id/entryCustomerId"
+        android:layout_below="@+id/header"
+        android:layout_toEndOf="@+id/labelCustomer"
+        android:inputType="number" />
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/frameSelection"
+        android:layout_below="@+id/entryCustomerId"
+        android:layout_marginTop="20dp"
+        >
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnLeft"
+            android:text="left"
+            android:layout_marginTop="70dp"
+            />
+
+
+        <FrameLayout
+            android:layout_width="250dp"
+            android:layout_height="220dp"
+            android:id="@+id/fragmentPhone"
+            android:layout_toRightOf="@id/btnLeft"
+            android:background="@drawable/fragment_border_buy"
+
+            />
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnRight"
+            android:text="Right"
+            android:layout_toRightOf="@id/fragmentPhone"
+            android:layout_marginTop="70dp"
+            />
+
+    </RelativeLayout>
+
+
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/frameExtra"
+        android:layout_below="@+id/frameSelection"
+        android:layout_marginTop="20dp"
+        >
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cboxInsurance"
+            android:text="Insurance"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="120dp"
+            />
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/cboxHeadphones"
+            android:layout_toEndOf="@+id/cboxInsurance"
+            android:text="Headphones"
+            />
+    </RelativeLayout>
+
+
+
+
+    <RelativeLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/frameAction"
+        android:layout_below="@+id/frameExtra"
+        >
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnAddOrderLine"
+            android:text="Add to your order"
+            />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnPay"
+            android:text="Pay"
+            android:layout_alignParentRight="true"/>
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+</RelativeLayout>
