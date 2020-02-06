@@ -1,4 +1,4 @@
-package com.example.finalprojectpmm;
+package com.example.finalprojectpmm.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
@@ -7,11 +7,13 @@ import androidx.fragment.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.example.finalprojectpmm.Fragments.FragmentBuy;
+import com.example.finalprojectpmm.Models.OrderLine;
+import com.example.finalprojectpmm.R;
 
 import java.util.ArrayList;
 
@@ -23,7 +25,7 @@ public class BuyActivity extends AppCompatActivity
     ArrayList<OrderLine> orderLines;
     int index=0;
 
-    Button mBtnLeft, mBtnRight, mBtnAdd, mBtnPay;
+    Button mBtnLeft, mBtnRight, mBtnAdd, mBtnOrder;
     CheckBox mCboxInsurance, mCboxHeadphones;
 
 
@@ -36,7 +38,7 @@ public class BuyActivity extends AppCompatActivity
         mBtnLeft = (Button)findViewById(R.id.btnLeft);
         mBtnRight = (Button)findViewById(R.id.btnRight);
         mBtnAdd= (Button)findViewById(R.id.btnAddOrderLine);
-        mBtnPay = (Button)findViewById(R.id.btnPay);
+        mBtnOrder = (Button)findViewById(R.id.btnOrder);
         mCboxInsurance = (CheckBox)findViewById(R.id.cboxInsurance);
         mCboxHeadphones = (CheckBox)findViewById(R.id.cboxHeadphones);
         orderLines = new ArrayList<>();
@@ -90,7 +92,7 @@ public class BuyActivity extends AppCompatActivity
             }
         });
 
-        mBtnPay.setOnClickListener(new View.OnClickListener()
+        mBtnOrder.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
@@ -131,7 +133,7 @@ public class BuyActivity extends AppCompatActivity
             }else{
                 index=3;
             }
-        }else if(direction==1){
+        }else{
             if(index!=3){
                 index++;
             }else{

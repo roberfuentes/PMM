@@ -1,5 +1,7 @@
-package com.example.finalprojectpmm;
+package com.example.finalprojectpmm.Models;
 
+
+import android.graphics.Bitmap;
 
 import java.io.Serializable;
 
@@ -11,8 +13,10 @@ public class OrderLine implements Serializable
     String price, quantity;
     Boolean insurance, headphones;
     int img;
+    Bitmap bitImg;
 
-    public OrderLine(int orderID, String price, String quantity, Boolean insurance, int img)
+
+    public OrderLine(String price, String quantity, Boolean insurance, int img, int orderID)
     {
         this.orderID = orderID;
         this.price = price;
@@ -21,18 +25,21 @@ public class OrderLine implements Serializable
         this.img = img;
     }
 
-    public OrderLine(int id, int orderID, String price, String quantity, Boolean insurance, int img)
+    //Retrieve data
+    public OrderLine(int id, String price, String quantity, Boolean insurance, Boolean headphones, Bitmap bitImg, int orderID)
     {
+
         this.id = id;
-        this.orderID = orderID;
         this.price = price;
         this.quantity = quantity;
         this.insurance = insurance;
-        this.img = img;
+        this.headphones = headphones;
+        this.bitImg = bitImg;
+        this.orderID = orderID;
     }
 
 
-
+    //Buy to pay
     public OrderLine(String price, String quantity, Boolean insurance, Boolean headphones, int img)
     {
         this.price = price;
@@ -110,5 +117,16 @@ public class OrderLine implements Serializable
     public void setImg(int img)
     {
         this.img = img;
+    }
+
+
+    public Bitmap getBitImg()
+    {
+        return bitImg;
+    }
+
+    public void setBitImg(Bitmap bitImg)
+    {
+        this.bitImg = bitImg;
     }
 }

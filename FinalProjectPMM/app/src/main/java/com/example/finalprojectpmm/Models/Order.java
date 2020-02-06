@@ -1,15 +1,15 @@
-package com.example.finalprojectpmm;
+package com.example.finalprojectpmm.Models;
 
 import java.io.Serializable;
 
-public class OrderAdapter implements Serializable
+public class Order implements Serializable
 {
     int id;
     int custID;
     String cost;
 
 
-    public OrderAdapter(int id, int custID, String cost)
+    public Order(int id, int custID, String cost)
     {
         this.id = id;
         this.custID = custID;

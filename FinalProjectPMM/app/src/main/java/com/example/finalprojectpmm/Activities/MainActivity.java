@@ -1,29 +1,25 @@
-package com.example.finalprojectpmm;
+package com.example.finalprojectpmm.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.ContentValues;
+import android.app.ListActivity;
 import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import com.example.finalprojectpmm.DatabaseHelper.DBHelper;
+import com.example.finalprojectpmm.R;
 
 public class MainActivity extends AppCompatActivity
 {
 
-    Button mBtnBuy;
+    Button mBtnBuy, mBtnList;
 
     DBHelper dbHelper;
 
@@ -34,6 +30,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mBtnBuy = (Button) findViewById(R.id.btnBuy);
+        mBtnList = (Button)findViewById(R.id.btnList);
 
 
         dbHelper = new DBHelper(this);
@@ -48,13 +45,16 @@ public class MainActivity extends AppCompatActivity
                 startActivity(intent);
             }
         });
+        mBtnList.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
 
-
-
-
-
-
-
+                Intent intent = new Intent(MainActivity.this, ListDataActivity.class);
+                startActivity(intent);
+            }
+        });
 
 
     }

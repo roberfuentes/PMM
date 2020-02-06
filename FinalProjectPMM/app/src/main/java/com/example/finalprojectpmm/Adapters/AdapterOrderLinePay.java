@@ -1,4 +1,4 @@
-package com.example.finalprojectpmm;
+package com.example.finalprojectpmm.Adapters;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -8,22 +8,24 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.finalprojectpmm.Models.OrderLine;
+import com.example.finalprojectpmm.R;
+
 import java.util.ArrayList;
-import java.util.List;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
-public class AdapterOrderLinePayment extends ArrayAdapter<OrderLine>
+public class AdapterOrderLinePay extends ArrayAdapter<OrderLine>
 {
 
 
-    ArrayList<OrderLine> orderlines;
 
-    public AdapterOrderLinePayment(@NonNull Context context, int resource, @NonNull ArrayList<OrderLine> orderLines)
+
+    public AdapterOrderLinePay(@NonNull Context context, @NonNull ArrayList<OrderLine> orderLines)
     {
         super(context, 0, orderLines);
-        this.orderlines = orderLines;
+
     }
 
 
@@ -36,13 +38,15 @@ public class AdapterOrderLinePayment extends ArrayAdapter<OrderLine>
 
     public View initView(int position, @Nullable View convertView, @NonNull ViewGroup parent){
 
-        convertView = LayoutInflater.from(getContext()).inflate(R.layout.custom_layout_orderline_pay, parent, false);
+
+        convertView = LayoutInflater.from(getContext()).inflate(R.layout.custom_layout_orderline, parent, false);
 
         TextView lviewPrice = (TextView)convertView.findViewById(R.id.lviewPrice);
         TextView lviewQuantity= (TextView)convertView.findViewById(R.id.lviewQuantity);
         TextView lviewInsurance = (TextView)convertView.findViewById(R.id.lviewInsurance);
         TextView lviewHeadphones = (TextView)convertView.findViewById(R.id.lviewHeadphones);
         ImageView lviewPhone = (ImageView)convertView.findViewById(R.id.lviewImage);
+
 
 
         OrderLine orderLine = getItem(position);
@@ -63,6 +67,7 @@ public class AdapterOrderLinePayment extends ArrayAdapter<OrderLine>
         }else{
             lviewHeadphones.setText("Headphones: No");
         }
+
 
         lviewPhone.setImageResource(orderLine.getImg());
         lviewPhone.getLayoutParams().height = 150;
