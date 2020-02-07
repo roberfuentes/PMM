@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".Activities.MainActivity">
 
 
 
@@ -12,8 +12,29 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnBuy"
-        android:text="Buy"
+        android:background="@drawable/ic_icon_shop"
+        android:width="60dp"
+        android:height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="100dp"
+        android:layout_centerVertical="true"
+
         />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnList"
+        android:width="60dp"
+        android:height="100dp"
+        android:background="@drawable/ic_icon_viewlist"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="100dp"
+        android:layout_centerVertical="true"
+
+        />
+
+
 
 
 </RelativeLayout>

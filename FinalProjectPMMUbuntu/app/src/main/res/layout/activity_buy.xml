@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BuyActivity">
+    tools:context=".Activities.BuyActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -36,8 +36,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/frameSelection"
         android:layout_below="@+id/entryCustomerId"
-        android:layout_marginTop="20dp"
-        >
+        android:layout_marginTop="20dp">
 
         <Button
             android:layout_width="wrap_content"
@@ -71,12 +70,12 @@
 
 
     <RelativeLayout
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/frameExtra"
         android:layout_below="@+id/frameSelection"
         android:layout_marginTop="20dp"
-        >
+        android:background="@drawable/spinner_design">
 
         <CheckBox
             android:layout_width="wrap_content"
@@ -84,7 +83,8 @@
             android:id="@+id/cboxInsurance"
             android:text="Insurance"
             android:layout_alignParentLeft="true"
-            android:layout_marginLeft="120dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="8dp"
             />
         <CheckBox
             android:layout_width="wrap_content"
@@ -92,6 +92,13 @@
             android:id="@+id/cboxHeadphones"
             android:layout_toEndOf="@+id/cboxInsurance"
             android:text="Headphones"
+            android:layout_marginTop="8dp"
+            />
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spnQuantity"
+            android:layout_toEndOf="@id/cboxHeadphones"
             />
     </RelativeLayout>
 
