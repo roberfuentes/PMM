@@ -40,14 +40,12 @@ public class AdapterOrderLineList extends ArrayAdapter<OrderLine>
         TextView lviewPrice = (TextView)convertView.findViewById(R.id.lviewPrice);
         TextView lviewQuantity= (TextView)convertView.findViewById(R.id.lviewQuantity);
         TextView lviewInsurance = (TextView)convertView.findViewById(R.id.lviewInsurance);
-        TextView lviewHeadphones = (TextView)convertView.findViewById(R.id.lviewHeadphones);
         ImageView lviewPhone = (ImageView)convertView.findViewById(R.id.lviewImage);
         TextView lviewOrderId = (TextView)convertView.findViewById(R.id.lviewOrderId);
 
 
         OrderLine orderLine = getItem(position);
         Boolean insurance = orderLine.getInsurance();
-        Boolean headphones = orderLine.getHeadphones();
 
         lviewId.setText("ID:"+Integer.toString(orderLine.getId()));
         lviewPrice.setText("Price: "+orderLine.getPrice());
@@ -58,12 +56,6 @@ public class AdapterOrderLineList extends ArrayAdapter<OrderLine>
             lviewInsurance.setText("Insurance: Yes");
         }else{
             lviewInsurance.setText("Insurance: No");
-        }
-
-        if(headphones){
-            lviewHeadphones.setText("Headphones: Yes");
-        }else{
-            lviewHeadphones.setText("Headphones: No");
         }
 
 

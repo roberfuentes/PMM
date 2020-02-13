@@ -7,6 +7,12 @@
     tools:context=".Activities.MainActivity">
 
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/textWelcome"
+        android:text="Welcome to the app ?"/>
+
 
     <Button
         android:layout_width="wrap_content"
@@ -30,9 +36,7 @@
         android:background="@drawable/ic_icon_viewlist"
         android:layout_alignParentRight="true"
         android:layout_marginRight="100dp"
-        android:layout_centerVertical="true"
-
-        />
+        android:layout_centerVertical="true"/>
 
 
 

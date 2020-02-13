@@ -7,12 +7,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.TextView;
 
-import com.example.finalprojectpmm.Adapters.AdapterCustomer;
 import com.example.finalprojectpmm.Adapters.AdapterOrder;
 import com.example.finalprojectpmm.Adapters.AdapterOrderLineList;
-import com.example.finalprojectpmm.Adapters.AdapterOrderLinePay;
 import com.example.finalprojectpmm.DatabaseHelper.DBHelper;
 import com.example.finalprojectpmm.Models.Customer;
 import com.example.finalprojectpmm.Models.Order;
@@ -24,11 +22,12 @@ import java.util.ArrayList;
 
 public class ListDataActivity extends AppCompatActivity
 {
-    ListView viewCustomer, viewOrder, viewOrderLine;
-    ArrayList<Customer> customerArrayList;
+    ListView  viewOrder, viewOrderLine;
     ArrayList<Order> orderArrayList;
     ArrayList<OrderLine> orderLineArrayList;
+    TextView customerData;
     Button mRefresh;
+    int id;
 
     DBHelper dbHelper = null;
     @Override
@@ -38,25 +37,27 @@ public class ListDataActivity extends AppCompatActivity
         setContentView(R.layout.activity_list_data);
 
         dbHelper = new DBHelper(this);
-        viewCustomer = (ListView)findViewById(R.id.lViewCustomer);
+
+        customerData = (TextView)findViewById(R.id.customerData);
         viewOrder = (ListView)findViewById(R.id.lViewOrder);
         viewOrderLine = (ListView)findViewById(R.id.lViewOrderLine);
         mRefresh = (Button)findViewById(R.id.btnRefresh);
 
+        id = getIntent().getExtras().getInt("CustomerID");
+        Customer customer  = dbHelper.getCustomerUsername(id);
+
+        customerData.setText("Welcome to your orders " +  customer.getUsername() + " with ID:" + id);
 
 
-
-        customerArrayList = dbHelper.retrieveCustomers();
-        orderArrayList = dbHelper.retrieveOrder(-1);
-        orderLineArrayList = dbHelper.retrieveOrderLine(-1);
+        orderArrayList = dbHelper.retrieveOrder(id);
+        System.out.println("There are " + orderArrayList.size() + " orders from the customer " + id);
         AdapterOrder adapterOrder = new AdapterOrder(this,orderArrayList);
-        AdapterCustomer adapterCustomer = new AdapterCustomer(this, customerArrayList);
-        AdapterOrderLineList adapterOrderLineList = new AdapterOrderLineList(this, orderLineArrayList);
+
 
         viewOrder.setAdapter(adapterOrder);
-        viewCustomer.setAdapter(adapterCustomer);
-        viewOrderLine.setAdapter(adapterOrderLineList);
 
+
+        System.out.println("Adapter done");
 
 
         mRefresh.setOnClickListener(new View.OnClickListener()
@@ -65,16 +66,6 @@ public class ListDataActivity extends AppCompatActivity
             public void onClick(View v)
             {
                 refreshLists();
-            }
-        });
-
-        viewCustomer.setOnItemClickListener(new AdapterView.OnItemClickListener()
-        {
-            @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id)
-            {
-                Customer customer = (Customer)parent.getItemAtPosition(position);
-                showOrderListView(customer);
             }
         });
 
@@ -96,16 +87,13 @@ public class ListDataActivity extends AppCompatActivity
     public void refreshLists(){
         viewOrder.setAdapter(null);
         viewOrderLine.setAdapter(null);
-    }
 
-    public void showOrderListView(Customer customer){
-        viewOrderLine.setAdapter(null);
-
-        int id = customer.getId();
-
+        //Reload orders
         orderArrayList = dbHelper.retrieveOrder(id);
-        AdapterOrder adapterOrder = new AdapterOrder(this, orderArrayList);
-        viewOrder.setAdapter(adapterOrder);
+        AdapterOrder adapter = new AdapterOrder(this, orderArrayList);
+        viewOrder.setAdapter(adapter);
+        dbHelper.close();
+
     }
 
     public void showOrderLineListView(Order order){
@@ -115,5 +103,6 @@ public class ListDataActivity extends AppCompatActivity
         orderLineArrayList= dbHelper.retrieveOrderLine(id);
         AdapterOrderLineList adapterOrderLineList = new AdapterOrderLineList(this, orderLineArrayList);
         viewOrderLine.setAdapter(adapterOrderLineList);
+        dbHelper.close();
     }
 }

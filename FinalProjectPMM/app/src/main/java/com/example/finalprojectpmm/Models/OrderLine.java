@@ -8,8 +8,8 @@ import java.io.Serializable;
 public class OrderLine implements Serializable
 {
 
-    int id;
-    int orderID;
+    int id, orderID;
+    int productID;
     String price, quantity;
     Boolean insurance, headphones;
     int img;
@@ -26,21 +26,31 @@ public class OrderLine implements Serializable
     }
 
     //Retrieve data
-    public OrderLine(int id, String price, String quantity, Boolean insurance, Boolean headphones, Bitmap bitImg, int orderID)
+    public OrderLine(int id, String price, String quantity, Boolean insurance, Bitmap bitImg, int orderID)
     {
 
         this.id = id;
         this.price = price;
         this.quantity = quantity;
         this.insurance = insurance;
-        this.headphones = headphones;
         this.bitImg = bitImg;
         this.orderID = orderID;
     }
 
 
+
+    public OrderLine(String price, String quantity, Boolean insurance, Boolean headphones, Bitmap bitImg)
+    {
+        this.price = price;
+        this.quantity = quantity;
+        this.insurance = insurance;
+        this.bitImg = bitImg;
+        this.headphones = headphones;
+    }
+
+
     //Buy to pay
-    public OrderLine(String price, String quantity, Boolean insurance, Boolean headphones, int img)
+    public OrderLine(String price, String quantity, Boolean insurance, Boolean headphones, int img, int productID)
     {
         this.price = price;
         this.quantity = quantity;
@@ -119,6 +129,14 @@ public class OrderLine implements Serializable
         this.img = img;
     }
 
+    public int getProductID()
+    {
+        return productID;
+    }
+    public void setProductID(int productID)
+    {
+        this.productID = productID;
+    }
 
     public Bitmap getBitImg()
     {

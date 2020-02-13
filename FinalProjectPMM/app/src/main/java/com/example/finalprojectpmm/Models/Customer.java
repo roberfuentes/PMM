@@ -5,13 +5,26 @@ import java.io.Serializable;
 public class Customer implements Serializable
 {
     int id;
-    String name;
+
+    String Username;
+    String password;
 
 
-    public Customer(int id, String name)
+
+    public Customer(int id, String Username, String password)
     {
         this.id = id;
-        this.name = name;
+        this.Username = Username;
+        this.password = password;
+    }
+    public Customer(int id, String Username)
+    {
+        this.id = id;
+        this.Username = Username;
+    }
+    public Customer(String Username)
+    {
+        this.Username = Username;
     }
 
     public int getId()
@@ -24,13 +37,22 @@ public class Customer implements Serializable
         this.id = id;
     }
 
-    public String getName()
+    public String getUsername()
     {
-        return name;
+        return Username;
     }
 
-    public void setName(String name)
+    public void setUsername(String Username)
     {
-        this.name = name;
+        this.Username = Username;
+    }
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public void setPassword(String password)
+    {
+        this.password = password;
     }
 }

@@ -5,14 +5,19 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.finalprojectpmm.DatabaseHelper.DBHelper;
 import com.example.finalprojectpmm.Fragments.FragmentBuy;
 import com.example.finalprojectpmm.Models.OrderLine;
+import com.example.finalprojectpmm.Models.Products;
 import com.example.finalprojectpmm.R;
 
 import java.util.ArrayList;
@@ -21,12 +26,14 @@ import java.util.ArrayList;
 public class BuyActivity extends AppCompatActivity
 {
 
-    int phones[][] = {{R.drawable.xiaomi_redmi_note_7, 150}, {R.drawable.xiaomi_redmi_note_8, 200}, {R.drawable.xiaomi_mi_9_lite, 250}, {R.drawable.xiaomi_mi_9t, 300}};
+    int phones[][] = {{}, {R.drawable.xiaomi_redmi_note_7, 150}, {R.drawable.xiaomi_redmi_note_8, 200}, {R.drawable.xiaomi_mi_9_lite, 250}, {R.drawable.xiaomi_mi_9t, 300}};
     ArrayList<OrderLine> orderLines;
-    int index=0;
+    int index, id;
 
     Button mBtnLeft, mBtnRight, mBtnAdd, mBtnOrder;
     CheckBox mCboxInsurance, mCboxHeadphones;
+
+    DBHelper dbHelper;
 
 
     @Override
@@ -42,9 +49,26 @@ public class BuyActivity extends AppCompatActivity
         mCboxInsurance = (CheckBox)findViewById(R.id.cboxInsurance);
         mCboxHeadphones = (CheckBox)findViewById(R.id.cboxHeadphones);
         orderLines = new ArrayList<>();
-        if(savedInstanceState==null){
+        dbHelper = new DBHelper(this);
+
+        if (savedInstanceState == null)
+        {
+            if (checkProductValues())
+            {
+                System.out.println("es true");
+                insertProductValues();
+            }
+            System.out.println("es true");
+
+            index = 1;
             addFragment();
         }
+
+
+
+        id = getIntent().getExtras().getInt("CustomerID");
+        System.out.println("U catching the customer right?" + id);
+
 
 
         mBtnLeft.setOnClickListener(new View.OnClickListener()
@@ -52,7 +76,14 @@ public class BuyActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                replaceFragment(0);
+                if (index != 1)
+                {
+                    index--;
+                } else
+                {
+                    index = 4;
+                }
+                replaceFragment();
             }
         });
         mBtnRight.setOnClickListener(new View.OnClickListener()
@@ -60,7 +91,14 @@ public class BuyActivity extends AppCompatActivity
             @Override
             public void onClick(View v)
             {
-                replaceFragment(1);
+                if (index != 4)
+                {
+                    index++;
+                } else
+                {
+                    index = 1;
+                }
+                replaceFragment();
             }
         });
 
@@ -85,9 +123,11 @@ public class BuyActivity extends AppCompatActivity
                 }
                 int image = phones[index][0];
 
+
                 Toast.makeText(BuyActivity.this, "Index" + index + ", Precio: "+ price + " and size:" + orderLines.size(), Toast.LENGTH_SHORT).show();
-                OrderLine orderline = new OrderLine(price, quantity, insurance, headphones, image);
+                OrderLine orderline = new OrderLine(price, quantity, insurance, headphones, image, index);
                 orderLines.add(orderline);
+
 
             }
         });
@@ -99,6 +139,7 @@ public class BuyActivity extends AppCompatActivity
             {
                 Bundle bundle = new Bundle();
                 bundle.putSerializable("orderlines", orderLines);
+                bundle.putInt("CustomerID", id);
                 System.out.println("Size before:"+orderLines.size());
                 Intent intent = new Intent(BuyActivity.this, PayActivity.class);
                 intent.putExtras(bundle);
@@ -115,39 +156,66 @@ public class BuyActivity extends AppCompatActivity
 
     }
 
-    public void addFragment(){
+    public void addFragment()
+    {
         Bundle bundle = new Bundle();
-        bundle.putInt("index", index);
+        Products product = dbHelper.retrieveProduct(index);
+        bundle.putSerializable("product", product);
+        System.out.println("This should be getting the product ADD:" + product.getName());
 
-        Fragment fragment = new FragmentBuy();
-        fragment.setArguments(bundle);
+        String phoneName = product.getName();
+        int phonePrice = product.getUnitPrice();
+        Bitmap phoneImage = product.getbitImg();
 
+        Fragment fragment = FragmentBuy.newInstance(phoneName, phonePrice, phoneImage);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+
         ft.add(R.id.fragmentPhone, fragment);
         ft.commit();
+
+
     }
-    public void replaceFragment(int direction){
-        if(direction==0){
-            if(index!=0){
-                index--;
-            }else{
-                index=3;
-            }
-        }else{
-            if(index!=3){
-                index++;
-            }else{
-                index=0;
-            }
-        }
+    public void replaceFragment()
+    {
+
         Bundle bundle = new Bundle();
-        bundle.putInt("index", index);
+        Products product = dbHelper.retrieveProduct(index);
+        bundle.putSerializable("product", product);
 
-        Fragment fragment = new FragmentBuy();
-        fragment.setArguments(bundle);
+        String phoneName = product.getName();
+        int phonePrice = product.getUnitPrice();
+        Bitmap phoneImage = product.getbitImg();
 
+        Fragment fragment = FragmentBuy.newInstance(phoneName, phonePrice, phoneImage);
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
+
         ft.replace(R.id.fragmentPhone, fragment);
         ft.commit();
     }
+
+    private void insertProductValues()
+    {
+        dbHelper.insertProducts();
+    }
+
+    public boolean checkProductValues()
+    {
+        if (dbHelper.checkProducts())
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
+    }
+
+
+    public Bitmap imageToBitmap(int image){
+        ImageView imageView = new ImageView(this);
+        imageView.setImageResource(image);
+        BitmapDrawable bmDrawable = (BitmapDrawable) imageView.getDrawable();
+        Bitmap bitmap = bmDrawable.getBitmap();
+        return bitmap;
+    }
+
 }
