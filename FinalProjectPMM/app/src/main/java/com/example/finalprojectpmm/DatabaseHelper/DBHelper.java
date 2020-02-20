@@ -268,6 +268,11 @@ public class DBHelper extends SQLiteOpenHelper
         return orders;
     }
 
+    public boolean deleteOrder(int order_id)
+    {
+        return db.delete(TABLE_ORDERS, ORDERS_ID+ "=" + order_id, null) > 0;
+    }
+
     //ORDERLINE
 
 
@@ -314,7 +319,7 @@ public class DBHelper extends SQLiteOpenHelper
         return orderLines;
     }
 
-    public long insertOrderLine(int price, int quantity, boolean insurance, boolean headphones, int productID, long orderID)
+    public long insertOrderLine(int price, int quantity, boolean insurance, int productID, long orderID)
     {
         db = this.getWritableDatabase();
         try
@@ -352,6 +357,11 @@ public class DBHelper extends SQLiteOpenHelper
 
         }
         return 0;
+    }
+
+    public boolean deleteOrderLine(int order_id)
+    {
+        return db.delete(TABLE_ORDERLINE, ORDERLINE_ORDERS+ "=" + order_id, null) > 0;
     }
 
 

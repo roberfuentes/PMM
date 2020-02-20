@@ -80,7 +80,6 @@ public class PayActivity extends AppCompatActivity
                         int price = Integer.parseInt(orderLine.getPrice());
                         int quantity = Integer.parseInt(orderLine.getQuantity());
                         boolean insurance = orderLine.getInsurance();
-                        boolean headphones = orderLine.getHeadphones();
                         int image = orderLine.getImg();
                         long orderlineOrderId = orderID;
                         int productID = orderLine.getProductID();
@@ -89,11 +88,13 @@ public class PayActivity extends AppCompatActivity
 
                         Drawable drawable = getResources().getDrawable(image);
                         Bitmap bitImage = ((BitmapDrawable) drawable).getBitmap();
+
                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
                         bitImage.compress(Bitmap.CompressFormat.JPEG, 100, stream);
 
 
-                        dbHelper.insertOrderLine(price, quantity, insurance, headphones, 1, orderlineOrderId);
+
+                        dbHelper.insertOrderLine(price, quantity, insurance, productID, orderlineOrderId);
                         System.out.println("orderline inserted");
 
                     }

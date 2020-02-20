@@ -36,12 +36,12 @@ public class AdapterOrderLineList extends ArrayAdapter<OrderLine>
 
         convertView = LayoutInflater.from(getContext()).inflate(R.layout.custom_layour_orderline_list, parent, false);
 
-        TextView lviewId = (TextView)convertView.findViewById(R.id.lviewId);
-        TextView lviewPrice = (TextView)convertView.findViewById(R.id.lviewPrice);
-        TextView lviewQuantity= (TextView)convertView.findViewById(R.id.lviewQuantity);
-        TextView lviewInsurance = (TextView)convertView.findViewById(R.id.lviewInsurance);
-        ImageView lviewPhone = (ImageView)convertView.findViewById(R.id.lviewImage);
-        TextView lviewOrderId = (TextView)convertView.findViewById(R.id.lviewOrderId);
+        TextView lviewId = convertView.findViewById(R.id.lviewId);
+        TextView lviewPrice = convertView.findViewById(R.id.lviewPrice);
+        TextView lviewQuantity= convertView.findViewById(R.id.lviewQuantity);
+        TextView lviewInsurance = convertView.findViewById(R.id.lviewInsurance);
+        ImageView lviewPhone = convertView.findViewById(R.id.lviewImage);
+        TextView lviewOrderId = convertView.findViewById(R.id.lviewOrderId);
 
 
         OrderLine orderLine = getItem(position);

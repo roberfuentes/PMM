@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.finalprojectpmm.DatabaseHelper.DBHelper;
@@ -31,7 +32,9 @@ public class BuyActivity extends AppCompatActivity
     int index, id;
 
     Button mBtnLeft, mBtnRight, mBtnAdd, mBtnOrder;
-    CheckBox mCboxInsurance, mCboxHeadphones;
+    CheckBox mCboxInsurance;
+    TextView mLabelCustomer;
+
 
     DBHelper dbHelper;
 
@@ -42,12 +45,12 @@ public class BuyActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buy);
 
-        mBtnLeft = (Button)findViewById(R.id.btnLeft);
-        mBtnRight = (Button)findViewById(R.id.btnRight);
-        mBtnAdd= (Button)findViewById(R.id.btnAddOrderLine);
-        mBtnOrder = (Button)findViewById(R.id.btnOrder);
-        mCboxInsurance = (CheckBox)findViewById(R.id.cboxInsurance);
-        mCboxHeadphones = (CheckBox)findViewById(R.id.cboxHeadphones);
+        mLabelCustomer = findViewById(R.id.labelCustomer);
+        mBtnLeft = findViewById(R.id.btnLeft);
+        mBtnRight = findViewById(R.id.btnRight);
+        mBtnAdd= findViewById(R.id.btnAddOrderLine);
+        mBtnOrder = findViewById(R.id.btnOrder);
+        mCboxInsurance = findViewById(R.id.cboxInsurance);
         orderLines = new ArrayList<>();
         dbHelper = new DBHelper(this);
 
@@ -67,6 +70,7 @@ public class BuyActivity extends AppCompatActivity
 
 
         id = getIntent().getExtras().getInt("CustomerID");
+        mLabelCustomer.setText("Customer ID:" + id);
         System.out.println("U catching the customer right?" + id);
 
 
@@ -117,15 +121,12 @@ public class BuyActivity extends AppCompatActivity
                     insurance = true;
 
                 }
-                if(mCboxHeadphones.isChecked()){
-                    headphones = true;
 
-                }
                 int image = phones[index][0];
 
-
+                int productID = index;
                 Toast.makeText(BuyActivity.this, "Index" + index + ", Precio: "+ price + " and size:" + orderLines.size(), Toast.LENGTH_SHORT).show();
-                OrderLine orderline = new OrderLine(price, quantity, insurance, headphones, image, index);
+                OrderLine orderline = new OrderLine(price, quantity, insurance,  image, productID);
                 orderLines.add(orderline);
 
 

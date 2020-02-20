@@ -11,19 +11,12 @@ public class OrderLine implements Serializable
     int id, orderID;
     int productID;
     String price, quantity;
-    Boolean insurance, headphones;
+    Boolean insurance;
     int img;
     Bitmap bitImg;
 
 
-    public OrderLine(String price, String quantity, Boolean insurance, int img, int orderID)
-    {
-        this.orderID = orderID;
-        this.price = price;
-        this.quantity = quantity;
-        this.insurance = insurance;
-        this.img = img;
-    }
+
 
     //Retrieve data
     public OrderLine(int id, String price, String quantity, Boolean insurance, Bitmap bitImg, int orderID)
@@ -39,35 +32,25 @@ public class OrderLine implements Serializable
 
 
 
-    public OrderLine(String price, String quantity, Boolean insurance, Boolean headphones, Bitmap bitImg)
+    public OrderLine(String price, String quantity, Boolean insurance, Bitmap bitImg)
     {
         this.price = price;
         this.quantity = quantity;
         this.insurance = insurance;
         this.bitImg = bitImg;
-        this.headphones = headphones;
     }
 
 
     //Buy to pay
-    public OrderLine(String price, String quantity, Boolean insurance, Boolean headphones, int img, int productID)
+    public OrderLine(String price, String quantity, Boolean insurance, int img, int productID)
     {
         this.price = price;
         this.quantity = quantity;
         this.insurance = insurance;
         this.img = img;
-        this.headphones = headphones;
+        this.productID = productID;
     }
 
-    public Boolean getHeadphones()
-    {
-        return headphones;
-    }
-
-    public void setHeadphones(Boolean headphones)
-    {
-        this.headphones = headphones;
-    }
 
     public int getId()
     {

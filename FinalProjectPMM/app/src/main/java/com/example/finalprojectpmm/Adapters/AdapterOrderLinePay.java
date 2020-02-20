@@ -51,7 +51,6 @@ public class AdapterOrderLinePay extends ArrayAdapter<OrderLine>
 
         OrderLine orderLine = getItem(position);
         Boolean insurance = orderLine.getInsurance();
-        Boolean headphones = orderLine.getHeadphones();
 
         lviewPrice.setText("Price: "+orderLine.getPrice());
         lviewQuantity.setText("Quantity: "+orderLine.getQuantity());
@@ -62,11 +61,6 @@ public class AdapterOrderLinePay extends ArrayAdapter<OrderLine>
             lviewInsurance.setText("Insurance: No");
         }
 
-        if(headphones){
-            lviewHeadphones.setText("Headphones: Yes");
-        }else{
-            lviewHeadphones.setText("Headphones: No");
-        }
 
 
         lviewPhone.setImageResource(orderLine.getImg());

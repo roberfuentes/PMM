@@ -1,16 +1,20 @@
 package com.example.finalprojectpmm.Activities;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.finalprojectpmm.Adapters.AdapterOrder;
 import com.example.finalprojectpmm.Adapters.AdapterOrderLineList;
+
 import com.example.finalprojectpmm.DatabaseHelper.DBHelper;
 import com.example.finalprojectpmm.Models.Customer;
 import com.example.finalprojectpmm.Models.Order;
@@ -60,6 +64,7 @@ public class ListDataActivity extends AppCompatActivity
         System.out.println("Adapter done");
 
 
+        //Refresh orders
         mRefresh.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -69,6 +74,7 @@ public class ListDataActivity extends AppCompatActivity
             }
         });
 
+        //Show orderlines of the order clicked
         viewOrder.setOnItemClickListener(new AdapterView.OnItemClickListener()
         {
             @Override
@@ -79,11 +85,51 @@ public class ListDataActivity extends AppCompatActivity
             }
         });
 
+        viewOrder.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener()
+        {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id)
+            {
+
+                final Order order = (Order)parent.getItemAtPosition(position);
+                id = order.getId();
+
+                AlertDialog.Builder builder= new AlertDialog.Builder(ListDataActivity.this);
+                builder.setTitle("Delete order");
+
+                builder.setMessage("Do you want to delete the order with id:"+id+"? ");
+
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
+                        deleteOrder(order);
+                        refreshLists();
+                        Toast.makeText(ListDataActivity.this, "Your order has been deleted from the database", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener()
+                {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which)
+                    {
 
 
+                    }
+                });
+
+                AlertDialog dialog = builder.create();
+                dialog.show();
+
+                return false;
+            }
+        });
     }
 
 
+
+    //Refresh order and don't show orderlines
     public void refreshLists(){
         viewOrder.setAdapter(null);
         viewOrderLine.setAdapter(null);
@@ -92,10 +138,10 @@ public class ListDataActivity extends AppCompatActivity
         orderArrayList = dbHelper.retrieveOrder(id);
         AdapterOrder adapter = new AdapterOrder(this, orderArrayList);
         viewOrder.setAdapter(adapter);
-        dbHelper.close();
 
     }
 
+    //get all the orderlines for the order id
     public void showOrderLineListView(Order order){
 
         int id = order.getId();
@@ -103,6 +149,11 @@ public class ListDataActivity extends AppCompatActivity
         orderLineArrayList= dbHelper.retrieveOrderLine(id);
         AdapterOrderLineList adapterOrderLineList = new AdapterOrderLineList(this, orderLineArrayList);
         viewOrderLine.setAdapter(adapterOrderLineList);
-        dbHelper.close();
+    }
+
+    public void deleteOrder(Order order){
+        int id = order.getId();
+        dbHelper.deleteOrderLine(id);
+        dbHelper.deleteOrder(id);
     }
 }

@@ -1,16 +1,10 @@
 package com.example.finalprojectpmm.Activities;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,10 +28,10 @@ public class LoginActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        mEntryUsername = (EditText) findViewById(R.id.loginEntryUsername);
-        mEntryPassword = (EditText) findViewById(R.id.loginEntryPassword);
-        mButtonLogin = (Button) findViewById(R.id.buttonLogin);
-        mIntentRegister = (TextView) findViewById(R.id.intentRegister);
+        mEntryUsername = findViewById(R.id.loginEntryUsername);
+        mEntryPassword =  findViewById(R.id.loginEntryPassword);
+        mButtonLogin = findViewById(R.id.buttonLogin);
+        mIntentRegister = findViewById(R.id.intentRegister);
         dbHelper = new DBHelper(LoginActivity.this);
 
         mButtonLogin.setOnClickListener(new View.OnClickListener()
@@ -77,31 +71,7 @@ public class LoginActivity extends AppCompatActivity
     }
 
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu)
-    {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.app_menu, menu);
-        return true;
-    }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item)
-    {
-        switch (item.getItemId())
-        {
-            case R.id.aboutApp:
-                Toast.makeText(LoginActivity.this, "About App", Toast.LENGTH_SHORT).show();
-                return true;
-            case R.id.aboutUs:
-                Toast.makeText(LoginActivity.this, "About Us", Toast.LENGTH_SHORT).show();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-
-        }
-
-    }
 
 
 }
